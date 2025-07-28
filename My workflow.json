@@ -1,0 +1,95 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1ksKOCO47uGoxCKJCLpCN1qU-7vG24F0kuITSYOhwfFs",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksKOCO47uGoxCKJCLpCN1qU-7vG24F0kuITSYOhwfFs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1579992603,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ksKOCO47uGoxCKJCLpCN1qU-7vG24F0kuITSYOhwfFs/edit#gid=1579992603"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "44ffedc9-bdbc-446f-9a5a-dceb878e7fb1",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "FgYHGeYoM7qGwlYg",
+          "name": "Google Sheets Trigger account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "sohamsupekar24@gmail.com",
+        "toEmail": "professorgamingyt2402@gmail.com",
+        "subject": "=New Resume Submission from {{ $json[\"Name\"] }}",
+        "html": "=<p>Hello HR Team,</p>\n\n<p>A new resume has been submitted via the internship form.</p>\n\n<p><strong>Timestamp:</strong> {{ $json[\"Timestamp\"] }}</p>\n<p><strong>Name:</strong> {{ $json[\"Name\"] }}</p>\n<p><strong>Email:</strong> {{ $json[\"Email\"] }}</p>\n<p><strong>College Name:</strong> {{ $json[\"College Name\"] }}</p>\n<p><strong>Skills:</strong> {{ $json[\"Skills\"] }}</p>\n\n<p><strong>Resume Link:</strong> <a href=\"{{ $json[\"Resume Upload (Drive link)\"] }}\" target=\"_blank\">View Resume</a></p>\n\n<p>Regards,<br>Brown Roots Automation</p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2fb87150-1896-4cdb-a3ec-b14f77abaf04",
+      "name": "Send email",
+      "webhookId": "d53e98f7-4ed5-4179-8749-f3196d6d1625",
+      "credentials": {
+        "smtp": {
+          "id": "Jqn6sBhxznG766G9",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "553eaa5f-bb11-4033-9014-496c36ee478c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "16e44583d52a90d4a5e8e6159023923125697121d14170f6a6fe95cd9bf0c94e"
+  },
+  "id": "Gnw4rrIc6lTQI75H",
+  "tags": []
+}
